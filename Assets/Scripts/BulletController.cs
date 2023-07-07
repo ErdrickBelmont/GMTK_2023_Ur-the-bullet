@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    private SlowMoController slowMo;
 
     // Start is called before the first frame update
-    void Start() {}
+    void Start() { slowMo = gameObject.GetComponent<SlowMoController>(); }
 
     void FixedUpdate()
     {
         transform.position += transform.forward * moveSpeed;
 
+        HandleRotation();
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
+            slowMo.slowDown();
+        }
+        if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)){
+            slowMo.speedUp();
+        }
+    }
+
+    void HandleRotation(){
         float rotX = 0;
         float rotY = 0;
 
