@@ -5,19 +5,25 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    [SerializeField] private float fireDelay = 1.0f;
     [Space]
     [SerializeField] private SlowMoController slowMo;
     [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
     [Space]
     [SerializeField] private CinemachineController cameraController;
+    [SerializeField] private GameObject gunObject;
+    private bool inBarrel = true;
 
-    [SerializeField] private Rigidbody rb;
     private float rotX = 0;
     private float rotY = 0;
     private bool wasdControls;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start() {
+        gunObject.transform.parent = null;
+        rb = GetComponent<Rigidbody>();
         rotX = transform.localEulerAngles.x;
         rotY = transform.localEulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
@@ -27,27 +33,36 @@ public class BulletController : MonoBehaviour
     }
 
     void Update(){
-        if (wasdControls) {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                slowMo.slowDown();
-            }
-            if (Input.GetKeyUp(KeyCode.Space)) {
-                slowMo.speedUp();
-            }
-        } else {
-            if (Input.GetMouseButtonDown(0)) {
-                slowMo.slowDown();
-            }
-            if (Input.GetMouseButtonUp(0)) {
-                slowMo.speedUp();
+        if(fireDelay >= 0.0f) { fireDelay -= Time.deltaTime; }
+
+        if(!inBarrel){
+            if (wasdControls) {
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    slowMo.slowDown();
+                }
+                if (Input.GetKeyUp(KeyCode.Space)) {
+                    slowMo.speedUp();
+                }
+            } else {
+                if (Input.GetMouseButtonDown(0)) {
+                    slowMo.slowDown();
+                }
+                if (Input.GetMouseButtonUp(0)) {
+                    slowMo.speedUp();
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
+        if(fireDelay > 0.0f) { return; }
+
         rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
-        HandleRotation();
+
+        if(!inBarrel){
+            HandleRotation();
+        }
     }
 
     void HandleRotation(){
@@ -86,12 +101,20 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.name == "BarrelExitTrigger"){
+            inBarrel = false;
+            cameraController.ExitGun();
+        }
+    }
+
     void Explode(){ 
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        rb.isKinematic = true;
+        //rb.enabled = false;
 
         slowMo.slowDown();
 
-        cameraController.SwitchState();
+        cameraController.Explode();
 
         yellowExplosionParticles.Play();
         orangeExplosionParticles.Play();

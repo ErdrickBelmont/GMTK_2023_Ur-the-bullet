@@ -5,15 +5,16 @@ using UnityEngine;
 public class CinemachineController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    private bool mainCamera = true;
+    
+    public void Explode(){
+        animator.Play("FarCamera");
+    }
 
-    public void SwitchState(){
-        if(mainCamera){
-            animator.Play("FarCamera");
-        } else {
-            animator.Play("MainCamera");
-        }
+    public void ExitGun(){
+        animator.Play("MainCamera");
+    }
 
-        mainCamera = !mainCamera;
+    public void Reset(){
+        animator.Play("GunCamera");
     }
 }
