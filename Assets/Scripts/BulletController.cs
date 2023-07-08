@@ -10,6 +10,8 @@ public class BulletController : MonoBehaviour
     [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
     [Space]
     [SerializeField] private CinemachineController cameraController;
+
+    [SerializeField] private Rigidbody rb;
     private float rotX = 0;
     private float rotY = 0;
     private bool wasdControls;
@@ -44,8 +46,7 @@ public class BulletController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += transform.forward * moveSpeed * slowMo.currentMultiplier;
-
+        rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
         HandleRotation();
     }
 
@@ -96,7 +97,7 @@ public class BulletController : MonoBehaviour
         orangeExplosionParticles.Play();
 
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
         gameObject.GetComponent<BulletController>().enabled = false;
     }
 }

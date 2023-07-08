@@ -502,7 +502,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: moveSpeed
-      value: 0.05
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
+      propertyPath: horRotateSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
+      propertyPath: vertRotateSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: cameraController
