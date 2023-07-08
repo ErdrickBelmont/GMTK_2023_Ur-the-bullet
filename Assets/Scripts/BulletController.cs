@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier, normalizeSpeed, normalizeEpsilon;
     [SerializeField] private SlowMoController slowMo;
     [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
 
@@ -12,6 +12,17 @@ public class BulletController : MonoBehaviour
     void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
 
     void Update(){
+        Vector3 eulerAngles = transform.eulerAngles;
+        Debug.Log(eulerAngles.z);
+        if (eulerAngles.z < 180 - normalizeEpsilon)
+        {
+            transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z - (normalizeSpeed * Time.deltaTime));
+        }
+        else if (eulerAngles.z > 180 + normalizeEpsilon)
+        {
+            transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z + (normalizeSpeed * Time.deltaTime));
+        }
+
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
             slowMo.slowDown();
         }
@@ -60,8 +71,10 @@ public class BulletController : MonoBehaviour
         rotY *= vertRotateSpeed;
         
         transform.Rotate(-rotX, 0, 0);
-        transform.Rotate(0, rotY, 0, Space.World);
+        transform.Rotate(0, rotY, 0, Space.Self);
     }
+
+    
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Obstacle"){
