@@ -120,7 +120,7 @@ public class BulletController : MonoBehaviour
         orangeExplosionParticles.Play();
 
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
         gameObject.GetComponent<BulletController>().enabled = false;
     }
 }
