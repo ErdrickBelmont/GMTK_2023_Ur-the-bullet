@@ -63,7 +63,8 @@ public class BulletController : MonoBehaviour
         transform.Rotate(0, rotY, 0, Space.World);
     }
 
-    void OnTriggerEnter(Collider other){
+    void OnCollisionEnter(Collision other){
+        print("hello");
         if(other.gameObject.tag == "Obstacle"){
             Explode();
         }
