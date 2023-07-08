@@ -11,7 +11,7 @@ public class SlowMoController : MonoBehaviour
     public float endMultiplier = 0.25f;
     private float currentTime = 0;
     [HideInInspector]
-    public float currentMultiplier = 0;
+    public float currentMultiplier = 1;
     public void slowDown()
     {
         if (animCurve[0].value == startMultiplier) { return; }

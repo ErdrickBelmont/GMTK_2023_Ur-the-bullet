@@ -5,17 +5,13 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
-    private SlowMoController slowMo;
+    [SerializeField] private SlowMoController slowMo;
+    [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
 
     // Start is called before the first frame update
-    void Start() { slowMo = gameObject.GetComponent<SlowMoController>(); }
+    void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
 
-    void FixedUpdate()
-    {
-        transform.position += transform.forward * moveSpeed;
-
-        HandleRotation();
-
+    void Update(){
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
             slowMo.slowDown();
         }
@@ -24,27 +20,32 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        transform.position += transform.forward * moveSpeed * slowMo.currentMultiplier;
+
+        HandleRotation();
+    }
+
     void HandleRotation(){
         float rotX = 0;
         float rotY = 0;
 
         //Horizontal rotation
-        if(Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)){
-            rotY = -1;
+        if(Input.GetKey(KeyCode.A)){
+            rotY -= 1;
             //transform.Rotate(0, -horRotateSpeed, 0, Space.World);
         }
-        if(Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){
-            rotY =  1;
-            //transform.Rotate(0,  horRotateSpeed, 0, Space.World);
+        if(Input.GetKey(KeyCode.D)){
+            rotY +=  1;
         }
 
         //Vertical rotation
-        if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)){
-            rotX = 1;
-            //transform.Rotate(-vertRotateSpeed, 0, 0);
+        if(Input.GetKey(KeyCode.W)){
+            rotX += 1;
         }
-        if(Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)){
-            rotX = -1;
+        if(Input.GetKey(KeyCode.S)){
+            rotX -= 1;
             //transform.Rotate( vertRotateSpeed, 0, 0);
         }
 
@@ -60,5 +61,22 @@ public class BulletController : MonoBehaviour
         
         transform.Rotate(-rotX, 0, 0);
         transform.Rotate(0, rotY, 0, Space.World);
+    }
+
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag == "Obstacle"){
+            Explode();
+        }
+    }
+
+    void Explode(){ 
+        slowMo.slowDown();
+
+        yellowExplosionParticles.Play();
+        orangeExplosionParticles.Play();
+
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<BulletController>().enabled = false;
     }
 }
