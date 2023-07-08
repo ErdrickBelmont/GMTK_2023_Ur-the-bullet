@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2317662723614530127}
   - component: {fileID: 5413072290458549318}
   m_Layer: 0
-  m_Name: Barrel Camera
+  m_Name: Gun Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256664613625418527}
-  m_LocalRotation: {x: -0, y: 1e-45, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3916898, y: -0.013666689, z: -3.8762832}
+  m_LocalRotation: {x: 0.08058504, y: 0.1646467, z: -0.013498034, w: 0.98296255}
+  m_LocalPosition: {x: -0.6336062, y: 0.75633335, z: -5.906283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,7 +49,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 15
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -107,7 +107,7 @@ Transform:
   - {fileID: 6208899380860321406}
   - {fileID: 1984354838243438490}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2719464638217808292
 MonoBehaviour:
@@ -137,16 +137,16 @@ MonoBehaviour:
   - {fileID: 3425729231836209428}
   - {fileID: 891148868386221705}
   m_Instructions:
+  - m_FullHash: -447583501
+    m_VirtualCamera: {fileID: 5413072290458549318}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
   - m_FullHash: 1839989770
     m_VirtualCamera: {fileID: 3425729231836209428}
     m_ActivateAfter: 0
     m_MinDuration: 0
   - m_FullHash: 1556973183
     m_VirtualCamera: {fileID: 891148868386221705}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
-  - m_FullHash: -447583501
-    m_VirtualCamera: {fileID: 5413072290458549318}
     m_ActivateAfter: 0
     m_MinDuration: 0
   m_DefaultBlend:
@@ -158,13 +158,13 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 502caf6d91b9caa4487fb48639fa3b22, type: 2}
   m_ParentHash:
   - m_Hash: 1839989770
     m_ParentHash: 756556552
   - m_Hash: 1556973183
     m_ParentHash: 756556552
-  - m_Hash: -447583501
+  - m_Hash: 322526039
     m_ParentHash: 756556552
 --- !u!95 &2588302975848927560
 Animator:
@@ -224,8 +224,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2287469932063365630}
-  m_LocalRotation: {x: 0.14839111, y: -0, z: -0, w: 0.9889288}
-  m_LocalPosition: {x: 1.3916898, y: 0.6863333, z: -3.7762833}
+  m_LocalRotation: {x: 0.12260166, y: 0.000000017602131, z: -0.0000000021744548, w: 0.99245596}
+  m_LocalPosition: {x: 0.8863938, y: 0.6863333, z: -4.286283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0.1, z: -0.83}
+  m_FollowOffset: {x: 0, y: 0.3, z: -1.31}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0.7, z: -2.28}
+  m_FollowOffset: {x: 0, y: 0.7, z: -2.79}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -486,8 +486,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6898268309987268400}
-  m_LocalRotation: {x: 0.059916075, y: -0.0000000021469333, z: 1.2886735e-10, w: 0.99820346}
-  m_LocalPosition: {x: 1.3916898, y: 0.086333305, z: -2.3262835}
+  m_LocalRotation: {x: 0.1123253, y: -0.000000016590196, z: 0.000000001875367, w: 0.9936715}
+  m_LocalPosition: {x: 0.8863938, y: 0.2863333, z: -2.806283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -511,7 +511,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 7
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0, z: -2.38}
+  m_FollowOffset: {x: -1.52, y: 0.77, z: -4.41}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
