@@ -5,8 +5,11 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    [Space]
     [SerializeField] private SlowMoController slowMo;
     [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
+    [Space]
+    [SerializeField] private CinemachineController cameraController;
 
     // Start is called before the first frame update
     void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
@@ -64,14 +67,17 @@ public class BulletController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other){
-        print("hello");
         if(other.gameObject.tag == "Obstacle"){
             Explode();
         }
     }
 
     void Explode(){ 
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
         slowMo.slowDown();
+
+        cameraController.SwitchState();
 
         yellowExplosionParticles.Play();
         orangeExplosionParticles.Play();
