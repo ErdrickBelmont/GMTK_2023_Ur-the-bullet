@@ -14,7 +14,7 @@ public class BulletController : MonoBehaviour
     private float rotY = 0;
 
     // Start is called before the first frame update
-    void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
+    void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); rotY = gameObject.transform.localRotation.eulerAngles.y;}
 
     void Update(){
         // Vector3 eulerAngles = transform.eulerAngles;
