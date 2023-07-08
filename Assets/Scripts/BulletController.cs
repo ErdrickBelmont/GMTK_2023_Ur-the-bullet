@@ -10,6 +10,8 @@ public class BulletController : MonoBehaviour
     [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
     [Space]
     [SerializeField] private CinemachineController cameraController;
+    private float rotX = 0;
+    private float rotY = 0;
 
     // Start is called before the first frame update
     void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
@@ -31,39 +33,25 @@ public class BulletController : MonoBehaviour
     }
 
     void HandleRotation(){
-        float rotX = 0;
-        float rotY = 0;
-
+        
         //Horizontal rotation
         if(Input.GetKey(KeyCode.A)){
-            rotY -= 1;
-            //transform.Rotate(0, -horRotateSpeed, 0, Space.World);
+            rotY -= 1 * horRotateSpeed;
         }
         if(Input.GetKey(KeyCode.D)){
-            rotY +=  1;
+            rotY += 1 * horRotateSpeed;
         }
 
         //Vertical rotation
         if(Input.GetKey(KeyCode.W)){
-            rotX += 1;
+            rotX -= 1 * vertRotateSpeed;
         }
         if(Input.GetKey(KeyCode.S)){
-            rotX -= 1;
-            //transform.Rotate( vertRotateSpeed, 0, 0);
+            rotX += 1 * vertRotateSpeed;
         }
-
-        //now for the mouse rotation. NOTE that rotY and rotX are swapped
-        rotY += Input.GetAxis ("Mouse X") * horRotateSpeed * mouseMoveMultiplier;
-        rotX += Input.GetAxis ("Mouse Y") * vertRotateSpeed * mouseMoveMultiplier;
- 
-        rotX = Mathf.Clamp(rotX, -1, 1);      
-        rotY = Mathf.Clamp(rotY, -1, 1);
-
-        rotX *= horRotateSpeed;
-        rotY *= vertRotateSpeed;
-        
-        transform.Rotate(-rotX, 0, 0);
-        transform.Rotate(0, rotY, 0, Space.World);
+        rotX = Mathf.Clamp(rotX, -45, 45);
+        Quaternion goal = Quaternion.Euler(rotX, rotY, 0);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, goal, 2);
     }
 
     void OnCollisionEnter(Collision other){
