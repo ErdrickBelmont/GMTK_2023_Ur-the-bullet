@@ -16,9 +16,11 @@ public class BulletController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        rotX = transform.localEulerAngles.x;
+        rotY = transform.localEulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
         wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
-        yellowExplosionParticles.Stop(); 
+        yellowExplosionParticles.Stop();
         orangeExplosionParticles.Stop(); 
     }
 
