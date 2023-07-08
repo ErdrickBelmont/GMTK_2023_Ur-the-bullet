@@ -14,20 +14,13 @@ public class BulletController : MonoBehaviour
     private float rotY = 0;
 
     // Start is called before the first frame update
-    void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); }
+    void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
+        yellowExplosionParticles.Stop(); 
+        orangeExplosionParticles.Stop(); 
+    }
 
     void Update(){
-        // Vector3 eulerAngles = transform.eulerAngles;
-        // Debug.Log(eulerAngles.z);
-        // if (eulerAngles.z < 180 - normalizeEpsilon)
-        // {
-        //     transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z - (normalizeSpeed * Time.deltaTime));
-        // }
-        // else if (eulerAngles.z > 180 + normalizeEpsilon)
-        // {
-        //     transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z + (normalizeSpeed * Time.deltaTime));
-        // }
-
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
             slowMo.slowDown();
         }
@@ -60,6 +53,8 @@ public class BulletController : MonoBehaviour
         if(Input.GetKey(KeyCode.S)){
             rotX += 1 * vertRotateSpeed;
         }
+        rotY += Input.GetAxis("Mouse X") * vertRotateSpeed * mouseMoveMultiplier;
+        rotX -= Input.GetAxis("Mouse Y") * horRotateSpeed * mouseMoveMultiplier;
         rotX = Mathf.Clamp(rotX, -90, 90);
         Quaternion goal = Quaternion.Euler(rotX, rotY, 0);
         transform.localRotation = Quaternion.RotateTowards(transform.localRotation, goal, horRotateSpeed);
