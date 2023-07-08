@@ -12,27 +12,31 @@ public class BulletController : MonoBehaviour
     [SerializeField] private CinemachineController cameraController;
     private float rotX = 0;
     private float rotY = 0;
+    private bool wasdControls;
 
     // Start is called before the first frame update
-    void Start() { yellowExplosionParticles.Stop(); orangeExplosionParticles.Stop(); rotY = gameObject.transform.localRotation.eulerAngles.y;}
+    void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
+        wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
+        yellowExplosionParticles.Stop(); 
+        orangeExplosionParticles.Stop(); 
+    }
 
     void Update(){
-        // Vector3 eulerAngles = transform.eulerAngles;
-        // Debug.Log(eulerAngles.z);
-        // if (eulerAngles.z < 180 - normalizeEpsilon)
-        // {
-        //     transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z - (normalizeSpeed * Time.deltaTime));
-        // }
-        // else if (eulerAngles.z > 180 + normalizeEpsilon)
-        // {
-        //     transform.eulerAngles = new Vector3 (eulerAngles.x, eulerAngles.y, eulerAngles.z + (normalizeSpeed * Time.deltaTime));
-        // }
-
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
-            slowMo.slowDown();
-        }
-        if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)){
-            slowMo.speedUp();
+        if (wasdControls) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                slowMo.slowDown();
+            }
+            if (Input.GetKeyUp(KeyCode.Space)) {
+                slowMo.speedUp();
+            }
+        } else {
+            if (Input.GetMouseButtonDown(0)) {
+                slowMo.slowDown();
+            }
+            if (Input.GetMouseButtonUp(0)) {
+                slowMo.speedUp();
+            }
         }
     }
 
@@ -44,22 +48,30 @@ public class BulletController : MonoBehaviour
     }
 
     void HandleRotation(){
-        
-        //Horizontal rotation
-        if(Input.GetKey(KeyCode.A)){
-            rotY -= 1 * horRotateSpeed;
+        //calc rotation
+        if (wasdControls) {
+            //Horizontal rotation
+            if (Input.GetKey(KeyCode.A)) {
+                rotY -= 1 * horRotateSpeed;
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                rotY += 1 * horRotateSpeed;
+            }
+
+            //Vertical rotation
+            if (Input.GetKey(KeyCode.W)) {
+                rotX -= 1 * vertRotateSpeed;
+            }
+            if (Input.GetKey(KeyCode.S)) {
+                rotX += 1 * vertRotateSpeed;
+            }
         }
-        if(Input.GetKey(KeyCode.D)){
-            rotY += 1 * horRotateSpeed;
+        else {
+            rotY += Input.GetAxis("Mouse X") * vertRotateSpeed * mouseMoveMultiplier;
+            rotX -= Input.GetAxis("Mouse Y") * horRotateSpeed * mouseMoveMultiplier;
         }
 
-        //Vertical rotation
-        if(Input.GetKey(KeyCode.W)){
-            rotX -= 1 * vertRotateSpeed;
-        }
-        if(Input.GetKey(KeyCode.S)){
-            rotX += 1 * vertRotateSpeed;
-        }
+        //apply rotation
         rotX = Mathf.Clamp(rotX, -90, 90);
         Quaternion goal = Quaternion.Euler(rotX, rotY, 0);
         transform.localRotation = Quaternion.RotateTowards(transform.localRotation, goal, horRotateSpeed);

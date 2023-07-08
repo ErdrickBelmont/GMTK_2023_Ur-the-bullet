@@ -4841,8 +4841,8 @@ GameObject:
   - component: {fileID: 7481966754144595486}
   - component: {fileID: 870160999821780366}
   - component: {fileID: 2423289219535842380}
-  - component: {fileID: 1365302745545551608}
   - component: {fileID: 4267981470164448026}
+  - component: {fileID: 1365302745545551608}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -4866,7 +4866,7 @@ Transform:
   - {fileID: 2222860159880959037}
   - {fileID: 5742877146794848985}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4147105235961564435
 MeshFilter:
@@ -4959,6 +4959,22 @@ MonoBehaviour:
   yellowExplosionParticles: {fileID: 8038490423781143966}
   orangeExplosionParticles: {fileID: 1032256123613018380}
   cameraController: {fileID: 0}
+--- !u!114 &4267981470164448026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260542166301449528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b36d4074127824797e24942d63f9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTime: 0.3
+  startMultiplier: 1
+  endMultiplier: 0.1
+  currentMultiplier: 1
 --- !u!54 &1365302745545551608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4986,22 +5002,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4267981470164448026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3260542166301449528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b36d4074127824797e24942d63f9ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionTime: 0.3
-  startMultiplier: 1
-  endMultiplier: 0.1
-  currentMultiplier: 1
 --- !u!1 &3278510488161426302
 GameObject:
   m_ObjectHideFlags: 0
