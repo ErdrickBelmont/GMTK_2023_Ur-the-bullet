@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.079422556
+      value: 0.07942253
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1786,7 +1786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.079422556
+      value: -0.07942253
       objectReference: {fileID: 0}
     - target: {fileID: 6846380041187682865, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_RootOrder
@@ -2259,11 +2259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 340654981751879758, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.1
+      value: -36.9
       objectReference: {fileID: 0}
     - target: {fileID: 340654981751879758, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 739754203883872839, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: m_CollisionDetection
@@ -2334,9 +2334,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1998571776}
     - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
+      propertyPath: horRotateSpeed
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
+      propertyPath: vertRotateSpeed
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 1676512456}
+    - target: {fileID: 2729447346986171245, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
+      propertyPath: mouseMoveMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3795765689091878581, guid: ac9f03718f171004491a8b6f0a790301, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
