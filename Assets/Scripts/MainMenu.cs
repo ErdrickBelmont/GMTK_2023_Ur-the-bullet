@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] int PlaySceneID;
     public Toggle ControlsToggle;
+    private FadeController fader;
 
     private void Start()
     {
@@ -16,19 +17,12 @@ public class MainMenu : MonoBehaviour
             Debug.Log(PlayerPrefs.GetInt("Controls"));
             ControlsToggle.isOn = PlayerPrefs.GetInt("Controls", 0) == 1;
         }
+        fader = gameObject.AddComponent<FadeController>();
+        fader.FadeIn(0.5f);
     }
     public void Play(){
-        StartCoroutine(DelayedPlay());
+        fader.FadeOutToSceen(0.5f, PlaySceneID);
     }
-
-    public IEnumerator DelayedPlay(){
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(PlaySceneID);
-    }
-
-    // public void Tutorial(){
-    //     SceneManager.LoadScene(TutorialSceneID);
-    // }
 
     public void Quit(){
         Application.Quit();
@@ -41,6 +35,5 @@ public class MainMenu : MonoBehaviour
         } else {
             PlayerPrefs.SetInt("Controls", 0);
         }
-        Debug.Log(PlayerPrefs.GetInt("Controls"));
     }
 }
