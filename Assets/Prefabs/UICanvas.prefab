@@ -608,7 +608,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1213085280480327068}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: SetControls
         m_Mode: 1
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1213085280480327068}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 1
@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1213085280480327068}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ExitToMenu
         m_Mode: 1
@@ -1982,7 +1982,7 @@ RectTransform:
   - {fileID: 251208432262962522}
   - {fileID: 187702744532586260}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
