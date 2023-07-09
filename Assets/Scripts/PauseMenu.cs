@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         }
         currentTime += Time.deltaTime;
         timerText.text = ((int)(currentTime / 60)).ToString("00") + ":" + ((int)(currentTime % 60)).ToString("00");
-        enemyCountText.text = enemiesHit + " / " + enemyCount + ", enemies defeated";
+        enemyCountText.text = enemiesHit + " / " + enemyCount + " targets eliminated";
     }
     public void ExitToMenu()
     {
