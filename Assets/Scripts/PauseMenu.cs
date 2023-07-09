@@ -11,17 +11,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] int MainMenuSceneID;
     [HideInInspector] public bool gameOver = false;
     public Toggle ControlsToggle;
-    public Slider VolSlider;
 
     private void Start()
     {
         if (ControlsToggle != null)
         {
             ControlsToggle.isOn = PlayerPrefs.GetInt("Controls", 0) == 1;
-        }
-        if (VolSlider != null)
-        {
-            VolSlider.value = PlayerPrefs.GetFloat("Volume", 1);
         }
     }
     private void Update()
@@ -54,9 +49,5 @@ public class PauseMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("Controls", 0);
         }
-    }
-    public void SetVolume()
-    {
-        PlayerPrefs.SetFloat("Volume", VolSlider.value);
     }
 }

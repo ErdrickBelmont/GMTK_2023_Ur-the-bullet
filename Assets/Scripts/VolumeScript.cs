@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeScript : MonoBehaviour
 {
     [SerializeField] private AudioMixer MasterMixer, MusicMixer, SFXMixer;
+    [SerializeField] private Slider MasterSlider, MusicSlider, SFXSlider;
     public float masterVolume, baseMusicVolume, baseSfxVolume = 1f;
     private float finalMusicVolume, finalSfxVolume = 1f;
+
+    private void Start(){
+        float volume = 0f;
+        MasterMixer.GetFloat("MasterVolume", out volume); MasterSlider.value = Mathf.Pow(10f, volume / 20f);
+        MusicMixer.GetFloat("MusicVolume", out volume);   MusicSlider.value  = Mathf.Pow(10f, volume / 20f);
+        SFXMixer.GetFloat("SFXVolume", out volume);       SFXSlider.value    = Mathf.Pow(10f, volume / 20f);
+    }
 
     public void setMasterVolume(float value) 
     {
