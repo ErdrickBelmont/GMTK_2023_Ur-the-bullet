@@ -100,7 +100,7 @@ public class BulletController : MonoBehaviour
         }
 
         //apply rotation
-        rotX = Mathf.Clamp(rotX, -90, 90);
+        rotX = Mathf.Clamp(rotX, -135, 135);
         Quaternion goal = Quaternion.Euler(rotX, rotY, 0);
         transform.localRotation = Quaternion.RotateTowards(transform.localRotation, goal, horRotateSpeed);
     }
