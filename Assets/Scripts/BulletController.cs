@@ -122,6 +122,12 @@ public class BulletController : MonoBehaviour
             inBarrel = false;
             cameraController.ExitGun();
         }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            FindObjectOfType<PauseMenu>().enemiesHit += 1;
+            Destroy(other.gameObject);
+        }
     }
 
     void Explode(){ 
