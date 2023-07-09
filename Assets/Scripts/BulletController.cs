@@ -139,6 +139,7 @@ public class BulletController : MonoBehaviour
         slowMoEnabled = false;
 
         musicScript.StopMusic();
+        musicScript.isDead = true;
         objectHitSound.Play();
         loseSound.Play();
 
