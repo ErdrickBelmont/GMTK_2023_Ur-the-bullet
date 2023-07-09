@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] int MainMenuSceneID;
     [HideInInspector] public bool gameOver = false;
     public Toggle ControlsToggle;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI enemyCountText;
+    private float currentTime = 0;
+    [HideInInspector] public int enemiesHit = 0;
+    public int enemyCount = 0;
 
     private void Start()
     {
@@ -32,6 +38,9 @@ public class PauseMenu : MonoBehaviour
             pauseMenuHolder.SetActive(false);
             Time.timeScale = 1;
         }
+        currentTime += Time.deltaTime;
+        timerText.text = ((int)(currentTime / 60)).ToString("00") + ":" + ((int)(currentTime % 60)).ToString("00");
+        enemyCountText.text = enemiesHit + " / " + enemyCount + ", enemies defeated";
     }
     public void ExitToMenu()
     {
