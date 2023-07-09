@@ -20,22 +20,22 @@ public class TutorialScript : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Controls", 0) == 1)
         {
-            StartCoroutine(Typer(textbox1, tutorialWASD, 0.1f));
-            yield return new WaitForSeconds(5);
-            StartCoroutine(Typer(textbox1, tutorialSlowWASD, 0.1f));
-            yield return new WaitForSeconds(5);
-            StartCoroutine(Typer(textbox1, tutorialPause, 0.1f));
-            yield return new WaitForSeconds(5);
+            StartCoroutine(Typer(textbox1, tutorialWASD, 0.05f));
+            yield return new WaitForSeconds(3);
+            StartCoroutine(Typer(textbox1, tutorialSlowWASD, 0.05f));
+            yield return new WaitForSeconds(3);
+            StartCoroutine(Typer(textbox1, tutorialPause, 0.05f));
+            yield return new WaitForSeconds(3);
             textbox1.text = "";
         }
         else
         {
-            StartCoroutine(Typer(textbox1, tutorialMouse, 0.1f));
-            yield return new WaitForSeconds(5);
-            StartCoroutine(Typer(textbox1, tutorialSlowMouse, 0.1f));
-            yield return new WaitForSeconds(5);
-            StartCoroutine(Typer(textbox1, tutorialPause, 0.1f));
-            yield return new WaitForSeconds(5);
+            StartCoroutine(Typer(textbox1, tutorialMouse, 0.05f));
+            yield return new WaitForSeconds(3);
+            StartCoroutine(Typer(textbox1, tutorialSlowMouse, 0.05f));
+            yield return new WaitForSeconds(3);
+            StartCoroutine(Typer(textbox1, tutorialPause, 0.05f));
+            yield return new WaitForSeconds(3);
             textbox1.text = "";
         }
     }
