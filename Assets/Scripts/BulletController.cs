@@ -130,7 +130,9 @@ public class BulletController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             FindObjectOfType<PauseMenu>().enemiesHit += 1;
-            AudioSource[] screams = other.gameObject.GetComponents<AudioSource>();
+            Transform screamBox = other.transform.Find("ScreamBox");
+            screamBox.parent = null;
+            AudioSource[] screams = screamBox.GetComponents<AudioSource>();
             if(screams.Length > 0){
                 AudioSource targetScream = screams[Random.Range(0,screams.Length)];
                 targetScream.Play();
