@@ -12,7 +12,7 @@ public class VolumeScript : MonoBehaviour
     private float finalMusicVolume, finalSfxVolume = 1f;
 
     [SerializeField] private SlowMoController slowMo;
-    [SerializeField] private AudioMixer wwMixer;
+    [SerializeField] private AudioMixer wwMixer; //These are for if/when we integrate slowmo with the music
 
     private void Start(){
         float volume = 0f;

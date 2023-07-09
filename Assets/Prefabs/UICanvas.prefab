@@ -3318,9 +3318,11 @@ MonoBehaviour:
   MasterSlider: {fileID: 6971039134663561636}
   MusicSlider: {fileID: 8772919642034983222}
   SFXSlider: {fileID: 8018415885322358492}
-  masterVolume: 1
+  masterVolume: 0.37552652
   baseMusicVolume: 0.62879497
   baseSfxVolume: 1
+  slowMo: {fileID: 0}
+  wwMixer: {fileID: 0}
 --- !u!1 &6106024936187445768
 GameObject:
   m_ObjectHideFlags: 0
@@ -4575,7 +4577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: 141}
   m_SizeDelta: {x: 1741.6, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &290044302233517549
