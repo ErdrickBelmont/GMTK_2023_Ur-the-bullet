@@ -120,8 +120,7 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.name == "BarrelExitTrigger"){
-            flashParticles.Play();
-            muzzleParticles.Play();
+            
             inBarrel = false;
             cameraController.ExitGun();
         }
