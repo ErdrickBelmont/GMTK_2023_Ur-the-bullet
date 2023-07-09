@@ -18,6 +18,7 @@ public class BulletController : MonoBehaviour
     
     private bool inBarrel = true;
     private bool alive = true;
+    private bool moving = false;
 
     private float rotX = 0;
     private float rotY = 0;
@@ -34,6 +35,7 @@ public class BulletController : MonoBehaviour
         rotX = transform.localEulerAngles.x;
         rotY = transform.localEulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
+        StartCoroutine(WaitThenFire());
         fader = this.transform.gameObject.AddComponent<FadeController>();
         fader.FadeIn(0.5f);
         new WaitForSeconds(0.5f);
@@ -42,8 +44,7 @@ public class BulletController : MonoBehaviour
 
     void Update(){
         wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
-        if(fireDelay >= 0.0f) { fireDelay -= Time.deltaTime; }
-    
+        
         if (Input.GetKeyDown(KeyCode.R)){
             fader.FadeOutToSceen(0.5f, SceneManager.GetActiveScene().buildIndex);
         }
@@ -70,14 +71,12 @@ public class BulletController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(fireDelay > 0.0f || !alive) { return; }
+        if(!moving || !alive) { return; }
 
-        if(alive){
-            rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
+        rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
 
-            if(!inBarrel){
-                HandleRotation();
-            }
+        if(!inBarrel){
+            HandleRotation();
         }
     }
 
@@ -120,7 +119,6 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.name == "BarrelExitTrigger"){
-            
             inBarrel = false;
             cameraController.ExitGun();
         }
@@ -144,6 +142,13 @@ public class BulletController : MonoBehaviour
 
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public IEnumerator WaitThenFire(){
+        yield return new WaitForSeconds(fireDelay);
+        flashParticles.Play();
+        muzzleParticles.Play();
+        moving = true;
     }
 
     public IEnumerator DelayedGameOverText(){
