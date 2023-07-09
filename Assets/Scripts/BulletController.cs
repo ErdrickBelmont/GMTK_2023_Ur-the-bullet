@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private float fireDelay = 1.0f;
     [Space]
     [SerializeField] private SlowMoController slowMo;
-    [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles, flashParticles, muzzleParticles;
+    [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles, flashParticles, muzzleParticles, bloodParticles;
     [Space]
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
@@ -130,6 +130,8 @@ public class BulletController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             FindObjectOfType<PauseMenu>().enemiesHit += 1;
+            bloodParticles.Play();
+
             Transform screamBox = other.transform.Find("ScreamBox");
             screamBox.parent = null;
             AudioSource[] screams = screamBox.GetComponents<AudioSource>();
@@ -137,6 +139,7 @@ public class BulletController : MonoBehaviour
                 AudioSource targetScream = screams[Random.Range(0,screams.Length)];
                 targetScream.Play();
             }
+
             Destroy(other.gameObject);
         }
     }
