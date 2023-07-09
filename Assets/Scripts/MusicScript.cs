@@ -6,6 +6,13 @@ public class MusicScript : MonoBehaviour
 {
     [SerializeField] private AudioSource wwIntro, bdIntro, wwLoop, bdLoop;
 
+    public void StopMusic(){
+        wwIntro.Stop();
+        bdIntro.Stop();
+        wwLoop.Stop();
+        bdLoop.Stop();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

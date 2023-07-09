@@ -15,6 +15,10 @@ public class BulletController : MonoBehaviour
     [SerializeField] private GameObject gunObject;
     [SerializeField] private GameObject gameOverText, resetPrompt;
     public PauseMenu pauseMenu;
+
+    [Header("Audio")]
+    [SerializeField] private MusicScript musicScript;
+    [SerializeField] private AudioSource gunFireSfx, objectHitSound, loseSound;
     
     private bool inBarrel = true;
     private bool alive = true;
@@ -134,6 +138,10 @@ public class BulletController : MonoBehaviour
         rb.isKinematic = true;
         slowMoEnabled = false;
 
+        musicScript.StopMusic();
+        objectHitSound.Play();
+        loseSound.Play();
+
         StartCoroutine(DelayedGameOverText());
         StartCoroutine(DelayedResetPrompt());
 
@@ -152,18 +160,19 @@ public class BulletController : MonoBehaviour
 
     public IEnumerator WaitThenFire(){
         yield return new WaitForSeconds(fireDelay);
+        gunFireSfx.Play();
         flashParticles.Play();
         muzzleParticles.Play();
         moving = true;
     }
 
     public IEnumerator DelayedGameOverText(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
         gameOverText.SetActive(true);
     }
 
     public IEnumerator DelayedResetPrompt(){
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.37f);
         resetPrompt.SetActive(true);
     }
 }
