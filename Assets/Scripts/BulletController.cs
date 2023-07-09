@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private float fireDelay = 1.0f;
     [Space]
     [SerializeField] private SlowMoController slowMo;
-    [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles;
+    [SerializeField] private ParticleSystem yellowExplosionParticles, orangeExplosionParticles, flashParticles, muzzleParticles;
     [Space]
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
@@ -34,8 +34,6 @@ public class BulletController : MonoBehaviour
         rotX = transform.localEulerAngles.x;
         rotY = transform.localEulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
-        yellowExplosionParticles.Stop();
-        orangeExplosionParticles.Stop();
         fader = this.transform.gameObject.AddComponent<FadeController>();
         fader.FadeIn(0.5f);
         new WaitForSeconds(0.5f);
@@ -122,6 +120,8 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.name == "BarrelExitTrigger"){
+            flashParticles.Play();
+            muzzleParticles.Play();
             inBarrel = false;
             cameraController.ExitGun();
         }
