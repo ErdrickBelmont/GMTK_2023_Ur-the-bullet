@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
         {
             VolSlider.value = PlayerPrefs.GetFloat("Volume", 1);
         }
-        Cursor.lockState = CursorLockMode.None;
     }
     private void Update()
     {

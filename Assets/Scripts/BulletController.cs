@@ -34,7 +34,6 @@ public class BulletController : MonoBehaviour
         rotX = transform.localEulerAngles.x;
         rotY = transform.localEulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
-        wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
         yellowExplosionParticles.Stop();
         orangeExplosionParticles.Stop();
         fader = this.transform.gameObject.AddComponent<FadeController>();
@@ -44,6 +43,7 @@ public class BulletController : MonoBehaviour
     }
 
     void Update(){
+        wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
         if(fireDelay >= 0.0f) { fireDelay -= Time.deltaTime; }
     
         if (Input.GetKeyDown(KeyCode.R)){
