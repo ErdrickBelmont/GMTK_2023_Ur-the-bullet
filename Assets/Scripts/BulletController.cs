@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BulletController : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class BulletController : MonoBehaviour
     [Space]
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
+    [SerializeField] private GameObject gameOverText, resetPrompt;
+    
     private bool inBarrel = true;
+    private bool alive = true;
 
     private float rotX = 0;
     private float rotY = 0;
@@ -34,8 +38,12 @@ public class BulletController : MonoBehaviour
 
     void Update(){
         if(fireDelay >= 0.0f) { fireDelay -= Time.deltaTime; }
+    
+        if (Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
-        if(!inBarrel){
+        if(!inBarrel && alive){
             if (wasdControls) {
                 if (Input.GetKeyDown(KeyCode.Space)) {
                     slowMo.slowDown();
@@ -56,12 +64,14 @@ public class BulletController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(fireDelay > 0.0f) { return; }
+        if(fireDelay > 0.0f || !alive) { return; }
 
-        rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
+        if(alive){
+            rb.velocity = transform.forward * moveSpeed * slowMo.currentMultiplier;
 
-        if(!inBarrel){
-            HandleRotation();
+            if(!inBarrel){
+                HandleRotation();
+            }
         }
     }
 
@@ -110,7 +120,9 @@ public class BulletController : MonoBehaviour
 
     void Explode(){ 
         rb.isKinematic = true;
-        //rb.enabled = false;
+
+        StartCoroutine(DelayedGameOverText());
+        StartCoroutine(DelayedResetPrompt());
 
         slowMo.slowDown();
 
@@ -119,8 +131,19 @@ public class BulletController : MonoBehaviour
         yellowExplosionParticles.Play();
         orangeExplosionParticles.Play();
 
+        alive = false;
+
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.GetComponent<BulletController>().enabled = false;
+    }
+
+    public IEnumerator DelayedGameOverText(){
+        yield return new WaitForSeconds(1f);
+        gameOverText.SetActive(true);
+    }
+
+    public IEnumerator DelayedResetPrompt(){
+        yield return new WaitForSeconds(2f);
+        resetPrompt.SetActive(true);
     }
 }
