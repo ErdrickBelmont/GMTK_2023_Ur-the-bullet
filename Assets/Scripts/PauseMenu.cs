@@ -48,6 +48,12 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(MainMenuSceneID);
     }
+
+    public void NextLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
     public void SetControls()
     {
         if (ControlsToggle.isOn)

@@ -13,12 +13,12 @@ public class BulletController : MonoBehaviour
     [Space]
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
-    [SerializeField] private GameObject gameOverText, resetPrompt;
+    [SerializeField] private GameObject gameOverText, resetPrompt, winMenu;
     public PauseMenu pauseMenu;
 
     [Header("Audio")]
     [SerializeField] private MusicScript musicScript;
-    [SerializeField] private AudioSource gunFireSfx, objectHitSound, loseSound;
+    [SerializeField] private AudioSource gunFireSfx, objectHitSound, loseSound, winSound;
     
     private bool inBarrel = true;
     private bool alive = true;
@@ -28,6 +28,7 @@ public class BulletController : MonoBehaviour
     private float rotY = 0;
     private bool wasdControls;
     private bool slowMoEnabled = false;
+    private bool gameWon = false;
     private FadeController fader;
 
     private Rigidbody rb;
@@ -127,7 +128,7 @@ public class BulletController : MonoBehaviour
             cameraController.ExitGun();
         }
 
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "FinalEnemy")
         {
             FindObjectOfType<PauseMenu>().enemiesHit += 1;
             bloodParticles.Play();
@@ -140,6 +141,13 @@ public class BulletController : MonoBehaviour
                 targetScream.Play();
             }
 
+            if (other.gameObject.tag == "FinalEnemy")
+            {
+                winSound.Play();
+                gameWon = true;
+                Explode();
+            }
+
             Destroy(other.gameObject);
         }
     }
@@ -148,13 +156,23 @@ public class BulletController : MonoBehaviour
         rb.isKinematic = true;
         slowMoEnabled = false;
 
+        if (!gameWon)
+        {
+            
+            objectHitSound.Play();
+            loseSound.Play();
+
+            StartCoroutine(DelayedGameOverText());
+            StartCoroutine(DelayedResetPrompt());
+        }
+        else
+        {
+            winMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         musicScript.StopMusic();
         musicScript.isDead = true;
-        objectHitSound.Play();
-        loseSound.Play();
-
-        StartCoroutine(DelayedGameOverText());
-        StartCoroutine(DelayedResetPrompt());
 
         slowMo.slowDown();
 
