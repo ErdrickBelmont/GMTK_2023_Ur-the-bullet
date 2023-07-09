@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         if (ControlsToggle != null)
         {
             ControlsToggle.isOn = PlayerPrefs.GetInt("Controls", 0) == 1;
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         enemyCountText.text = enemiesHit + " / " + enemyCount + " targets eliminated";
         if (bc.winMenu.activeSelf)
         {
+            currentTime -= Time.deltaTime;
             timerText.text = "";
             enemyCountText.text = "";
             finalTimer.text = "Final Time: \n" + ((int)(currentTime / 60)).ToString("00") + ":" + ((int)(currentTime % 60)).ToString("00");

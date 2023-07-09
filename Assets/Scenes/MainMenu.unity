@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaySceneID: 1
   ControlsToggle: {fileID: 1445439229}
+  mus: {fileID: 1268492591}
 --- !u!1 &150459104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,6 +5528,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!82 &1268492591 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7776815362541789910, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+  m_PrefabInstance: {fileID: 216356466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356302997
 GameObject:
   m_ObjectHideFlags: 0
