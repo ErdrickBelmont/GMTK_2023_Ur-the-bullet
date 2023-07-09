@@ -14,6 +14,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
     [SerializeField] private GameObject gameOverText, resetPrompt;
+    public PauseMenu pauseMenu;
     
     private bool inBarrel = true;
     private bool alive = true;
@@ -21,6 +22,8 @@ public class BulletController : MonoBehaviour
     private float rotX = 0;
     private float rotY = 0;
     private bool wasdControls;
+    private bool slowMoEnabled = false;
+    private FadeController fader;
 
     private Rigidbody rb;
 
@@ -33,17 +36,22 @@ public class BulletController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
         yellowExplosionParticles.Stop();
-        orangeExplosionParticles.Stop(); 
+        orangeExplosionParticles.Stop();
+        fader = this.transform.gameObject.AddComponent<FadeController>();
+        fader.FadeIn(0.5f);
+        new WaitForSeconds(0.5f);
+        slowMoEnabled = true;
     }
 
     void Update(){
         if(fireDelay >= 0.0f) { fireDelay -= Time.deltaTime; }
     
         if (Input.GetKeyDown(KeyCode.R)){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            fader.FadeOutToSceen(0.5f, SceneManager.GetActiveScene().buildIndex);
         }
 
-        if(!inBarrel && alive){
+        if(!inBarrel && alive && slowMoEnabled)
+        {
             if (wasdControls) {
                 if (Input.GetKeyDown(KeyCode.Space)) {
                     slowMo.slowDown();
@@ -107,6 +115,7 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision other){
         if(other.gameObject.tag == "Obstacle"){
+            pauseMenu.gameOver = true;
             Explode();
         }
     }
@@ -120,6 +129,7 @@ public class BulletController : MonoBehaviour
 
     void Explode(){ 
         rb.isKinematic = true;
+        slowMoEnabled = false;
 
         StartCoroutine(DelayedGameOverText());
         StartCoroutine(DelayedResetPrompt());
