@@ -15,6 +15,9 @@ public class BulletController : MonoBehaviour
     [SerializeField] private GameObject gunObject;
     [SerializeField] private GameObject gameOverText, resetPrompt;
     public PauseMenu pauseMenu;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource gunFireSfx;
     
     private bool inBarrel = true;
     private bool alive = true;
@@ -146,6 +149,7 @@ public class BulletController : MonoBehaviour
 
     public IEnumerator WaitThenFire(){
         yield return new WaitForSeconds(fireDelay);
+        gunFireSfx.Play();
         flashParticles.Play();
         muzzleParticles.Play();
         moving = true;

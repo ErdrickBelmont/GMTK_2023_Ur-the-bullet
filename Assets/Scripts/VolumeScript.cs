@@ -11,6 +11,9 @@ public class VolumeScript : MonoBehaviour
     public float masterVolume, baseMusicVolume, baseSfxVolume = 1f;
     private float finalMusicVolume, finalSfxVolume = 1f;
 
+    [SerializeField] private SlowMoController slowMo;
+    [SerializeField] private AudioMixer wwMixer;
+
     private void Start(){
         float volume = 0f;
         MasterMixer.GetFloat("MasterVolume", out volume); MasterSlider.value = Mathf.Pow(10f, volume / 20f);
