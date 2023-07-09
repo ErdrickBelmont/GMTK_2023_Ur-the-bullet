@@ -14,9 +14,12 @@ public class PauseMenu : MonoBehaviour
     public Toggle ControlsToggle;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI enemyCountText;
+    public TextMeshProUGUI finalTimer;
+    public TextMeshProUGUI finalEnemies;
     private float currentTime = 0;
     [HideInInspector] public int enemiesHit = 0;
     public int enemyCount = 0;
+    public BulletController bc;
 
     private void Start()
     {
@@ -41,6 +44,13 @@ public class PauseMenu : MonoBehaviour
         currentTime += Time.deltaTime;
         timerText.text = ((int)(currentTime / 60)).ToString("00") + ":" + ((int)(currentTime % 60)).ToString("00");
         enemyCountText.text = enemiesHit + " / " + enemyCount + " targets eliminated";
+        if (bc.winMenu.activeSelf)
+        {
+            timerText.text = "";
+            enemyCountText.text = "";
+            finalTimer.text = "Final Time: \n" + ((int)(currentTime / 60)).ToString("00") + ":" + ((int)(currentTime % 60)).ToString("00");
+            finalEnemies.text = enemiesHit + " / " + enemyCount + " targets eliminated";
+        }
     }
     public void ExitToMenu()
     {
