@@ -13,7 +13,7 @@ public class BulletController : MonoBehaviour
     [Space]
     [SerializeField] private CinemachineController cameraController;
     [SerializeField] private GameObject gunObject;
-    [SerializeField] private GameObject gameOverText, resetPrompt, winMenu;
+    [SerializeField] public GameObject gameOverText, resetPrompt, winMenu;
     public PauseMenu pauseMenu;
 
     [Header("Audio")]
