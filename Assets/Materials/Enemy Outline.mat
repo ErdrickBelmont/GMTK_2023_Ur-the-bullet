@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineTest 1
+  m_Name: Enemy Outline
   m_Shader: {fileID: -6465566751694194690, guid: b12f29c74b3951142b0af9d87a4f114c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
