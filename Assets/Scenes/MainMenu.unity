@@ -744,6 +744,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2378358801530809349, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: bdLoop
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378358801530809349, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: wwLoop
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378358801530809349, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: wwIntro
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3087982754683759144, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -796,7 +808,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7776815362541789910, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776815362541789910, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a28b005f45f3edf4692f550e0c309e1b, type: 3}
+    - target: {fileID: 7776815362541789910, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3059604134872950993, guid: 28319ae83e07dd64da6abdf83a454481, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1675978142060461153, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+    - {fileID: 3373656041858384906, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+    - {fileID: 8628943057084294928, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+    - {fileID: 2378358801530809349, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
