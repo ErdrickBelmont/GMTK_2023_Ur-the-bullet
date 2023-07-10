@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaySceneID: 1
   ControlsToggle: {fileID: 1445439229}
+  mus: {fileID: 1268492591}
 --- !u!1 &150459104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,7 +2725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 78, y: -175}
+  m_AnchoredPosition: {x: 78, y: -200.5}
   m_SizeDelta: {x: 2070.6309, y: 250.97998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735903495
@@ -5527,6 +5528,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!82 &1268492591 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7776815362541789910, guid: 4bb14a3863e207b4b8059f8bc78cae52, type: 3}
+  m_PrefabInstance: {fileID: 216356466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356302997
 GameObject:
   m_ObjectHideFlags: 0

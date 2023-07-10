@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] int PlaySceneID;
     public Toggle ControlsToggle;
     private FadeController fader;
+    public AudioSource mus;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class MainMenu : MonoBehaviour
         fader.FadeIn(0.5f);
     }
     public void Play(){
+        mus.Stop();
         fader.FadeOutToSceen(0.5f, PlaySceneID);
     }
 
