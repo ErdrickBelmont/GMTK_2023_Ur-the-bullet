@@ -21,8 +21,12 @@ public class PauseMenu : MonoBehaviour
     public int enemyCount = 0;
     public BulletController bc;
 
+    public float mouseSensitivity = 0.5f;
+
     private void Start()
     {
+        
+
         Time.timeScale = 1;
         if (ControlsToggle != null)
         {
@@ -77,4 +81,6 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("Controls", 0);
         }
     }
+
+    
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, horRotateSpeed, vertRotateSpeed, mouseMoveMultiplier;
+    private float bulletSensitivity;
     [SerializeField] private float fireDelay = 1.0f;
     [Space]
     [SerializeField] private SlowMoController slowMo;
@@ -35,6 +36,11 @@ public class BulletController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        if (PlayerPrefs.GetFloat("sensitivity", -1) == -1)
+        {
+            PlayerPrefs.SetFloat("sensitivity", 0.5f);
+        }
+
         gunObject.transform.parent = null;
         rb = GetComponent<Rigidbody>();
         rotX = transform.localEulerAngles.x;
@@ -49,6 +55,8 @@ public class BulletController : MonoBehaviour
 
     void Update(){
         wasdControls = PlayerPrefs.GetInt("Controls", 0) == 1;
+        bulletSensitivity = PlayerPrefs.GetFloat("sensitivity");
+
         
         if (Input.GetKeyDown(KeyCode.R)){
             fader.FadeOutToSceen(0.5f, SceneManager.GetActiveScene().buildIndex);
@@ -105,12 +113,12 @@ public class BulletController : MonoBehaviour
             }
         }
         else {
-            rotY += Input.GetAxis("Mouse X") * vertRotateSpeed * mouseMoveMultiplier;
-            rotX -= Input.GetAxis("Mouse Y") * horRotateSpeed * mouseMoveMultiplier;
+            rotY += Input.GetAxis("Mouse X") * vertRotateSpeed * (mouseMoveMultiplier * PlayerPrefs.GetFloat("sensitivity"));
+            rotX -= Input.GetAxis("Mouse Y") * horRotateSpeed * (mouseMoveMultiplier * PlayerPrefs.GetFloat("sensitivity"));
         }
 
         //apply rotation
-        rotX = Mathf.Clamp(rotX, -135, 135);
+        //rotX = Mathf.Clamp(rotX, -135, 135);
         Quaternion goal = Quaternion.Euler(rotX, rotY, 0);
         transform.localRotation = Quaternion.RotateTowards(transform.localRotation, goal, horRotateSpeed);
     }
