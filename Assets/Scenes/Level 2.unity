@@ -9713,6 +9713,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &381747813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8535637063454049497, guid: d641f29411d2fa54ab6f01b8ece1214e, type: 3}
+  m_PrefabInstance: {fileID: 1340792667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &382471291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5868149110170058165, guid: 6ffb4045aca62254a854c8b8d7d32616, type: 3}
@@ -11979,7 +11990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317662723614530127, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.047438107
+      value: 0.047438104
       objectReference: {fileID: 0}
     - target: {fileID: 2317662723614530127, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -11987,7 +11998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317662723614530127, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0665281
+      value: -0.06652809
       objectReference: {fileID: 0}
     - target: {fileID: 2719464638217808292, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_Follow
@@ -12031,7 +12042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07942254
+      value: 0.07942253
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -12039,7 +12050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6208899380860321406, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07942254
+      value: -0.07942253
       objectReference: {fileID: 0}
     - target: {fileID: 6846380041187682865, guid: 574322adb714bd94085f8044142a2cf2, type: 3}
       propertyPath: m_RootOrder
@@ -30809,7 +30820,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169620859}
-  m_LocalRotation: {x: 0.047438107, y: 0.8114851, z: -0.0665281, w: 0.57863253}
+  m_LocalRotation: {x: 0.047438104, y: 0.8114851, z: -0.06652809, w: 0.57863253}
   m_LocalPosition: {x: -3059.9883, y: 1.1518409, z: -1356.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37194,6 +37205,18 @@ PrefabInstance:
       propertyPath: bc
       value: 
       objectReference: {fileID: 569304225}
+    - target: {fileID: 7938716294063832994, guid: d641f29411d2fa54ab6f01b8ece1214e, type: 3}
+      propertyPath: enemyCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938716294063832994, guid: d641f29411d2fa54ab6f01b8ece1214e, type: 3}
+      propertyPath: finalTimer
+      value: 
+      objectReference: {fileID: 1980276702}
+    - target: {fileID: 7938716294063832994, guid: d641f29411d2fa54ab6f01b8ece1214e, type: 3}
+      propertyPath: finalEnemies
+      value: 
+      objectReference: {fileID: 381747813}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53793,6 +53816,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6239881831769578202, guid: 2a31b34fcb1780d4a8a48b264a79d419, type: 3}
+--- !u!114 &1980276702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4652132991392476754, guid: d641f29411d2fa54ab6f01b8ece1214e, type: 3}
+  m_PrefabInstance: {fileID: 1340792667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1981170379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3605612983006674333, guid: c875a946957b0d24d80e270b0da99371, type: 3}
