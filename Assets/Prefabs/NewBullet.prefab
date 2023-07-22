@@ -24855,6 +24855,7 @@ MonoBehaviour:
   gunObject: {fileID: 3006604225281205487}
   gameOverText: {fileID: 0}
   resetPrompt: {fileID: 0}
+  winMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   musicScript: {fileID: 0}
   gunFireSfx: {fileID: 7752644855502208845}
@@ -25130,7 +25131,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5007893380538153497, guid: 28319ae83e07dd64da6abdf83a454481, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8d3899142efc192438f8694d0f8f5cda, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
